@@ -1,5 +1,3 @@
-Checks
-======
 [![Build Status](https://travis-ci.org/DecibelInsight/ansible-atop.svg?branch=master)](https://travis-ci.org/DecibelInsight/ansible-atop)
 
 Role Name
