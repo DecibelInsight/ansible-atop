@@ -1,0 +1,18 @@
+---
+# tasks file for roles/atop
+
+  - name: remove init.d file
+    file:
+      path: /etc/init.d/atop
+      state: absent
+    tags:
+      - init
+
+  - name: deploy inid file
+    template:
+      src: etc/init/atop.conf
+      dest: /etc/init/atop.conf
+    notify:
+      - restart atop
+    tags:
+      - init

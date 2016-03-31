@@ -1,0 +1,8 @@
+*.sw[po]
+.retry*
+.vagrant*
+
+local_cache*
+*.zip
+#extra repos
+files*

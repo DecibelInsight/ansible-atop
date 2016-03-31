@@ -1,0 +1,28 @@
+before_script:
+  # cleanup
+  - rm -rf gitlab_*txt
+  # installations
+  - pip install flake8 --user
+
+stages:
+  - whitespace
+  - flake8
+  - shellcheck
+
+whitespace_job:
+  stage: whitespace
+  script:
+    # find extra spaces at the end of line
+    - bash -c 'ag --vimgrep " {1,}$" | tee gitlab_spaces.txt; /bin/true'
+    - if [[ "$( wc -l gitlab_spaces.txt | cut -d ' ' -f1)" -ne 0 ]]; then exit 1; fi
+
+flake8_job:
+  stage: flake8
+  script:
+    - ~/.local/bin/flake8 .
+
+shellcheck_job:
+  stage: shellcheck
+  script:
+    - for f in $(find ./ -name "*.sh"); do shellcheck $f || EXIT_CODE=1; done
+    - exit ${EXIT_CODE}
