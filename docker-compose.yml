@@ -2,4 +2,6 @@ version: '2'
 services:
   atop:
     image: mhristof/ansible-1.9.4
-    command: sleep 10s
+    command: ansible-playbook -i 'localhost, ' -c local /etc/ansible/roles/atop/atop.yml
+    volumes:
+      - ./:/etc/ansible/roles/atop
