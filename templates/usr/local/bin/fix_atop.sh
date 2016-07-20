@@ -46,7 +46,7 @@ ATOP_SIZE_MB=$(du -sh $LOCATION  | awk '{print $1}' | cut -d '.' -f1)
 
 [[ $VERBOSE ]] && echo "Used space [$USED_SPACE], atop size [$ATOP_SIZE_MB]"
 
-if [[ $USED_SPACE -lt 99 ]] && [[ $ATOP_SIZE_MB -gt 100 ]]; then
+if [[ $USED_SPACE -ge 98 ]] && [[ $ATOP_SIZE_MB -gt 100 ]]; then
     MSG="/run used space $USED_SPACE, $LOCATION size $ATOP_SIZE_MB"
     [[ $VERBOSE ]] && echo "$MSG"
     > $LOCATION
