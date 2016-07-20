@@ -16,3 +16,14 @@
       - restart atop
     tags:
       - init
+
+  - name: deploy fix_atop file
+    template:
+      src: usr/local/bin/fix_atop.sh
+      dest: /usr/local/bin/fix_atop.sh
+      mode: 0700
+
+  - name: deploy cron stuff
+    template:
+      src: etc/cron.d/atop
+      dest: /etc/cron.d/atop
