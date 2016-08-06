@@ -1,6 +1,12 @@
 ---
 # tasks file for roles/atop
 
+  - name: Disable atop service (will be replaced by ours)
+    service:
+      name: atop
+      state: stopped
+      enabled: false
+
   - name: remove init.d file
     file:
       path: /etc/init.d/atop
