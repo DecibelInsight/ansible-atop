@@ -42,7 +42,7 @@ done
 #Filesystem      Size  Used Avail Use% Mounted on
 #tmpfs           396M  3.6M  392M   1% /run
 USED_SPACE=$(df -h /run/ | tr -s ' ' | tail -1 | cut -d ' ' -f5 | tr -d '%')
-ATOP_SIZE_MB=$(du -sh $LOCATION  | awk '{print $1}' | cut -d '.' -f1)
+ATOP_SIZE_MB=$(du -sH $LOCATION  | awk '{print $1 / 1024}' | cut -d '.' -f1)
 
 [[ $VERBOSE ]] && echo "Used space [$USED_SPACE], atop size [$ATOP_SIZE_MB]"
 
